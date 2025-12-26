@@ -2,14 +2,14 @@
 name = "chef-cookbook"
 version = "0.1.0"
 entrypoint = "lib.typ"
-authors = ["Paul Müller <https://paulpelikan.de>"]
+authors = ["PaulMue0 <https://paulpelikan.de>"]
 license = "MIT"
-description = "Create elegant and modern recipe collections and cookbooks."
+description = "Create simple recipe collections and cookbooks."
 repository = "https://github.com/Paulmue0/cookbook"
 keywords = ["cookbook", "recipe", "food", "kitchen", "cooking"]
 categories = ["layout"]
 compiler = "0.13.1"
-exclude = ["example.pdf", ".gitignore", "thumbnail.png"]
+exclude = ["example.pdf", ".gitignore", "thumbnail.pdf"]
 
 [template]
 path = "template"
