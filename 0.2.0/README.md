@@ -68,6 +68,56 @@ Ingredients can be specified as a list containing either:
 - **Strings**: Simple text (e.g., "Salt").
 - **Dictionaries**: Structured data with `amount` and `name` keys (e.g., `(amount: "1 cup", name: "Milk")`).
 
+## Internationalization (i18n)
+
+The cookbook supports multiple languages out of the box, including English, German, Polish, French, Spanish, and Italian. It automatically adapts to the language set via Typst's native `text` rules.
+
+### Basic Usage
+
+To set the language for the entire cookbook, pass the `lang` parameter to the setup function:
+
+```typst
+#show: cookbook.with(
+  title: "Meine Rezepte",
+  lang: "de", // Switches headings to German
+)
+
+```
+
+To change the language for a specific recipe, use set text rule:
+
+```typst
+#{
+  set text(lang: "de")
+  recipe(
+    "Gegrillter Lachs mit Zitronen-Dill-Marinade",
+    // ... other parameters
+  )
+}
+```
+
+### Custom Dictionaries
+
+If a language is missing or you wish to override specific terms (e.g., using "Components" instead of "Ingredients"), use the `custom-dicts` parameter:
+
+```typst
+#show: cookbook.with(
+  custom-dicts: (
+    "en": (ingredients: "COMPONENTS"),
+    "pl": (chefs-note: "PORADA"),
+    "cz": (
+      chapter: "Kapitola",
+      collection: "Sbírka od ",
+      contents: "Obsah",
+      ingredients: "INGREDIENCE",
+      chefs-note: "POZNÁMKA ŠÉFKUCHAŘE",
+      preparations: "PŘÍPRAVA",
+    ),
+  )
+)
+
+```
+
 ## License
 
 MIT
