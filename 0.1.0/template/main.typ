@@ -4,7 +4,22 @@
   title: "Modern Kitchen",
   author: "Gourmet Studio",
   accent-color: rgb("#D9534F"),
+  lang: "en",
+  // Default language, can be overridden here for the entire cookbook
+  // or on individual recipes (see below)
+  custom-dicts: (
+    "cz": (
+      chapter: "Kapitola",
+      collection: "Sbírka od ",
+      contents: "Obsah",
+      ingredients: "INGREDIENCE",
+      chefs-note: "POZNÁMKA ŠÉFKUCHAŘE",
+      preparations: "PŘÍPRAVA",
+    ),
+  ),
 )
+
+// --- English (Default) ---
 
 = Starters
 
@@ -34,23 +49,61 @@
 
 = Mains
 
-#recipe(
-  "Lemon Herb Grilled Salmon",
-  description: [Light, zesty, and packed with healthy omega-3s. This salmon comes together in under 30 minutes.],
-  servings: "2 fillets",
-  prep-time: "10m",
-  cook-time: "15m",
-  ingredients: (
-    "2 salmon fillets",
-    "2 tbsp olive oil",
-    "1 tbsp fresh dill",
-    "1 lemon, sliced",
-  ),
-  instructions: [
-    1. Preheat your grill to medium-high heat. Brush the salmon fillets with olive oil.
-    2. Place the salmon on the grill, skin-side down. Cook for about 6-8 minutes without moving it.
-    3. Flip carefully and cook for another 2-4 minutes.
-    4. Serve garnished with fresh lemon slices and extra herbs.
-  ],
-  notes: "Be careful not to overcook the salmon.",
-)
+// Cookbook can be multilingual! Although the default language is English, you can specify a different language for blocks of recipes. You can either use built-in translations (currently supports German, Polish, French, Spanish, and Italian) or provide your own custom dictionary (see the 'custom-dicts' property above).
+
+// --- German (Built-in) ---
+// This uses 'de' keys from the built-in dictionary:
+// ingredients: "ZUTATEN", preparations: "VORBEREITUNG"
+
+#{
+  set text(lang: "de")
+  recipe(
+    "Gegrillter Lachs mit Zitronen-Dill-Marinade",
+    description: [Ein einfaches und elegantes Gericht, das die Frische des Lachses mit einer aromatischen Zitronen-Dill-Marinade kombiniert. Perfekt für den Sommer!],
+    servings: "2 Filets",
+    prep-time: "10 Min.",
+    cook-time: "15 Min.",
+    ingredients: (
+      "2 Lachsfilets",
+      "2 EL Olivenöl",
+      "1 EL frischer Dill",
+      "1 Zitrone, in Scheiben",
+    ),
+    instructions: [
+      1. Heizen Sie den Grill auf mittlere bis hohe Hitze vor. Bestreichen Sie die Lachsfilets mit Olivenöl.
+      2. Legen Sie den Lachs mit der Hautseite nach unten auf den Grill. Ca. 6–8 Minuten ohne Bewegung grillen.
+      3. Vorsichtig wenden und weitere 2–4 Minuten grillen.
+      4. Mit frischen Zitronenscheiben und Kräutern garnieren und servieren.
+    ],
+    notes: "Achten Sie darauf, den Lachs nicht zu lange zu garen.",
+  )
+}
+
+// --- Czech (User-provided) ---
+// This uses 'cz' keys from the user-provided dictionary:
+// ingredients: "INGREDIENCE", preparations: "PŘÍPRAVA"
+
+
+#{
+  set text(lang: "cz")
+  recipe(
+    "Smažený sýr s hranolkami",
+    description: [Klasické české jídlo, které je oblíbené mezi dětmi i dospělými. Křupavý smažený sýr podávaný s hranolkami a tatarskou omáčkou.],
+    servings: "4 porce",
+    prep-time: "15 min.",
+    cook-time: "10 min.",
+    ingredients: (
+      "4 plátky tvrdého sýra (např. eidam)",
+      "1 hrnek strouhanky",
+      "2 vejce",
+      "Olej na smažení",
+      "Hranolky a tatarská omáčka k podávání",
+    ),
+    instructions: [
+      1. Plátky sýra obalte nejprve ve strouhance, poté v rozšlehaných vejcích a znovu ve strouhance.
+      2. V hluboké pánvi rozehřejte olej a smažte sýr dozlatova z obou stran.
+      3. Podávejte horké s hranolkami a tatarskou omáčkou.
+    ],
+    notes: "Pro extra křupavost můžete sýr před smažením zamrazit na 30 minut.",
+  )
+}

@@ -1,3 +1,6 @@
+#import "i18n.typ": built-in-dicts // Import built-in dictionaries for localization
+
+// --- Visuals ---
 #let colors = (
   text: rgb("#333333"),
   muted: rgb("#757575"),
@@ -32,6 +35,26 @@
 
 // --- Main Template ---
 
+// Placeholder for user's custom dictionary
+#let user-dicts = state("chef-cookbook-i18n-from-user", (:))
+
+// Translation function
+#let translate(key) = context {
+  let lang = text.lang
+  let from-user = user-dicts.get()
+  
+  // 1. Check User-provided dict for this lang
+  if lang in from-user and key in from-user.at(lang) {
+    return from-user.at(lang).at(key)
+  }
+  
+  // 2. Fallback to Library-provided dict for this lang
+  let default-dict = built-in-dicts.at(lang, default: built-in-dicts.at("en"))
+  
+  // 3. Return the value, or the key name if absolutely nothing is found
+  return default-dict.at(key, default: key)
+}
+
 #let cookbook(
   title: "Recipe Collection",
   author: "Chef",
@@ -39,6 +62,8 @@
   paper: "a4",
   accent-color: colors.accent,
   cover-image: none,
+  lang: "en",
+  custom-dicts: (:),
   body
 ) = {
   set document(title: title, author: author)
@@ -66,16 +91,22 @@
     font: fonts.body, 
     size: 11pt, 
     fill: colors.text, 
-    lang: "en",
+    lang: lang,
     features: (onum: 1)
   )
+
+  // Store the user's custom dictionary in state
+  show: it => {
+    user-dicts.update(custom-dicts)
+    it
+  }
 
   // Headings
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     set align(center + horizon)
     block(width: 100%)[
-        #text(font: fonts.header, weight: "bold", size: 0.9em, tracking: 2pt, fill: colors.accent, upper("Chapter"))
+        #text(font: fonts.header, weight: "bold", size: 0.9em, tracking: 2pt, fill: colors.accent, upper(translate("chapter")))
         #v(0.5em)
         #text(font: fonts.header, weight: "black", size: 3.5em, fill: colors.text, it.body)
     ]
@@ -111,7 +142,7 @@
             #text(font: fonts.header, weight: "black", size: 4.5em, fill: colors.text, title)
           ]
           #v(1.5em)
-          #text(font: fonts.body, style: "italic", size: 1.5em, fill: colors.muted, "A collection by " + author)
+          #text(font: fonts.body, style: "italic", size: 1.5em, fill: colors.muted, translate("collection") + author)
         ]
       ]
       
@@ -125,7 +156,7 @@
   page(header: none)[
     #v(3cm)
     #align(center)[
-       #text(font: fonts.header, weight: "bold", size: 1.2em, tracking: 2pt, fill: colors.accent, upper("Contents"))
+       #text(font: fonts.header, weight: "bold", size: 1.2em, tracking: 2pt, fill: colors.accent, upper(translate("contents")))
        #v(1em)
        #line(length: 3cm, stroke: 0.5pt + colors.muted)
     ]
@@ -215,7 +246,7 @@
         width: 100%,
         stroke: 0.5pt + colors.line.darken(5%),
       )[
-        #text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, "INGREDIENTS")
+        #text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, translate("ingredients"))
         #v(0.8em)
         #set text(size: 0.95em)
         
@@ -238,7 +269,7 @@
 
       if notes != none {
         v(1.5em)
-        text(font: fonts.header, size: 0.9em, weight: "bold", fill: colors.accent, "CHEF'S NOTE")
+        text(font: fonts.header, size: 0.9em, weight: "bold", fill: colors.accent, translate("chefs-note"))
         v(0.3em)
         text(style: "italic", size: 0.9em, fill: colors.muted, notes)
       }
@@ -246,7 +277,7 @@
 
     // -- Right Column: Instructions --
     {
-      text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, "PREPARATION")
+      text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, translate("preparations"))
       v(1em)
       
       set enum(
