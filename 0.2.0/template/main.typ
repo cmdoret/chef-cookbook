@@ -1,4 +1,4 @@
-#import "@preview/chef-cookbook:0.1.0": *
+#import "@preview/chef-cookbook:0.2.0": *
 
 #show: cookbook.with(
   title: "Modern Kitchen",
