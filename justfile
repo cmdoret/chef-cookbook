@@ -8,6 +8,10 @@ pdf := "build/template.pdf"
 default:
   just --list
 
+# Format all source files.
+format *args:
+  treefmt {{args}}
+
 # Build template.
 build-template *args:
   typst compile \
