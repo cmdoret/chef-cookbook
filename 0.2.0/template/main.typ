@@ -1,4 +1,5 @@
-#import "@preview/chef-cookbook:0.2.0": *
+// #import "@preview/chef-cookbook:0.2.0": *
+#import "../lib.typ": *
 
 #show: cookbook.with(
   title: "Modern Kitchen",
@@ -38,11 +39,11 @@
     "Salt & pepper",
   ),
   instructions: [
-    1. Preheat oven to 200°C (400°F). Line a large baking sheet with parchment paper. Place tomatoes cut-side up on the baking sheet.
-    2. Drizzle everything generously with olive oil and season with salt and pepper. Roast for 40-45 minutes.
-    3. Squeeze the roasted garlic cloves out of their skins. Transfer the tomatoes and garlic to a blender.
-    4. Blend until smooth. Stir in heavy cream if using for extra richness.
-    5. Serve hot with crusty bread.
+    + Preheat oven to 200°C (400°F). Line a large baking sheet with parchment paper. Place tomatoes cut-side up on the baking sheet.
+    + Drizzle everything generously with olive oil and season with salt and pepper. Roast for 40-45 minutes.
+    + Squeeze the roasted garlic cloves out of their skins. Transfer the tomatoes and garlic to a blender.
+    + Blend until smooth. Stir in heavy cream if using for extra richness.
+    + Serve hot with crusty bread.
   ],
   notes: "For a vegan version, use coconut milk instead of heavy cream.",
 )
@@ -70,10 +71,10 @@
       "1 Zitrone, in Scheiben",
     ),
     instructions: [
-      1. Heizen Sie den Grill auf mittlere bis hohe Hitze vor. Bestreichen Sie die Lachsfilets mit Olivenöl.
-      2. Legen Sie den Lachs mit der Hautseite nach unten auf den Grill. Ca. 6–8 Minuten ohne Bewegung grillen.
-      3. Vorsichtig wenden und weitere 2–4 Minuten grillen.
-      4. Mit frischen Zitronenscheiben und Kräutern garnieren und servieren.
+      + Heizen Sie den Grill auf mittlere bis hohe Hitze vor. Bestreichen Sie die Lachsfilets mit Olivenöl.
+      + Legen Sie den Lachs mit der Hautseite nach unten auf den Grill. Ca. 6–8 Minuten ohne Bewegung grillen.
+      + Vorsichtig wenden und weitere 2–4 Minuten grillen.
+      + Mit frischen Zitronenscheiben und Kräutern garnieren und servieren.
     ],
     notes: "Achten Sie darauf, den Lachs nicht zu lange zu garen.",
   )
@@ -100,9 +101,9 @@
       "Hranolky a tatarská omáčka k podávání",
     ),
     instructions: [
-      1. Plátky sýra obalte nejprve ve strouhance, poté v rozšlehaných vejcích a znovu ve strouhance.
-      2. V hluboké pánvi rozehřejte olej a smažte sýr dozlatova z obou stran.
-      3. Podávejte horké s hranolkami a tatarskou omáčkou.
+      + Plátky sýra obalte nejprve ve strouhance, poté v rozšlehaných vejcích a znovu ve strouhance.
+      + V hluboké pánvi rozehřejte olej a smažte sýr dozlatova z obou stran.
+      + Podávejte horké s hranolkami a tatarskou omáčkou.
     ],
     notes: "Pro extra křupavost můžete sýr před smažením zamrazit na 30 minut.",
   )
