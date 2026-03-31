@@ -1,7 +1,7 @@
 #let built-in-dicts = (
   en: (
     chapter: "Chapter",
-    collection: "A collection by ",
+    collection: "A collection by",
     contents: "Contents",
     ingredients: "INGREDIENTS",
     chefs-note: "CHEF'S NOTE",
@@ -9,7 +9,7 @@
   ),
   de: (
     chapter: "Kapitel",
-    collection: "Eine Sammlung von ",
+    collection: "Eine Sammlung von",
     contents: "Inhaltsverzeichnis",
     ingredients: "ZUTATEN",
     chefs-note: "ANMERKUNG DES KOCHS",
@@ -17,7 +17,7 @@
   ),
   pl: (
     chapter: "Rozdział",
-    collection: "Kolekcja autorstwa ",
+    collection: "Kolekcja autorstwa",
     contents: "Spis treści",
     ingredients: "SKŁADNIKI",
     chefs-note: "NOTATKA SZEFA KUCHNI",
@@ -25,7 +25,7 @@
   ),
   fr: (
     chapter: "Chapitre",
-    collection: "Une collection de ",
+    collection: "Une collection de",
     contents: "Sommaire",
     ingredients: "INGRÉDIENTS",
     chefs-note: "NOTE DU CHEF",
@@ -33,7 +33,7 @@
   ),
   es: (
     chapter: "Capítulo",
-    collection: "Una colección de ",
+    collection: "Una colección de",
     contents: "Índice",
     ingredients: "INGREDIENTES",
     chefs-note: "NOTA DEL CHEF",
@@ -41,7 +41,7 @@
   ),
   it: (
     chapter: "Capitolo",
-    collection: "Una raccolta di ",
+    collection: "Una raccolta di",
     contents: "Indice",
     ingredients: "INGREDIENTI",
     chefs-note: "NOTE DELLO CHEF",

@@ -142,7 +142,7 @@
             #text(font: fonts.header, weight: "black", size: 4.5em, fill: colors.text, title)
           ]
           #v(1.5em)
-          #text(font: fonts.body, style: "italic", size: 1.5em, fill: colors.muted, translate("collection") + author)
+          #text(font: fonts.body, style: "italic", size: 1.5em, fill: colors.muted, translate("collection") + " " + author)
         ]
       ]
       
