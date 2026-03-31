@@ -119,18 +119,37 @@
     pagebreak(weak: true)
     set align(center + horizon)
     block(width: 100%)[
-      #text(font: fonts.header, weight: "bold", size: 0.9em, tracking: 2pt, fill: colors.accent, upper(
-        translate("chapter"),
-      ))
+      #text(
+        font: fonts.header,
+        weight: "bold",
+        size: 0.9em,
+        tracking: 2pt,
+        fill: colors.accent,
+        upper(
+          translate("chapter"),
+        ),
+      )
       #v(0.5em)
-      #text(font: fonts.header, weight: "black", size: 3.5em, fill: colors.text, it.body)
+      #text(
+        font: fonts.header,
+        weight: "black",
+        size: 3.5em,
+        fill: colors.text,
+        it.body,
+      )
     ]
   }
 
   show heading.where(level: 2): it => {
     pagebreak(weak: true)
     v(1em)
-    text(font: fonts.header, weight: "bold", size: 2.2em, fill: colors.text, it.body)
+    text(
+      font: fonts.header,
+      weight: "bold",
+      size: 2.2em,
+      fill: colors.text,
+      it.body,
+    )
     v(0.5em)
   }
 
@@ -150,11 +169,19 @@
             bottom: if cover-image == none { 4pt + accent-color } else { none },
           ),
           inset: (y: 3em),
-          fill: if cover-image != none { colors.bg-ing.lighten(10%) } else { none },
+          fill: if cover-image != none { colors.bg-ing.lighten(10%) } else {
+            none
+          },
           outset: if cover-image != none { 1cm } else { 0cm },
         )[
           #par(leading: 0.35em)[
-            #text(font: fonts.header, weight: "black", size: 4.5em, fill: colors.text, title)
+            #text(
+              font: fonts.header,
+              weight: "black",
+              size: 4.5em,
+              fill: colors.text,
+              title,
+            )
           ]
           #v(1.5em)
           #text(
@@ -168,9 +195,15 @@
       ]
 
       #place(bottom + center)[
-        #pad(bottom: 3cm, text(font: fonts.header, size: 0.8em, tracking: 3pt, fill: colors.muted, upper(
-          date.display("[month repr:long] [year]"),
-        )))
+        #pad(bottom: 3cm, text(
+          font: fonts.header,
+          size: 0.8em,
+          tracking: 3pt,
+          fill: colors.muted,
+          upper(
+            date.display("[month repr:long] [year]"),
+          ),
+        ))
       ]
     ]
   }
@@ -179,9 +212,16 @@
   page(header: none)[
     #v(3cm)
     #align(center)[
-      #text(font: fonts.header, weight: "bold", size: 1.2em, tracking: 2pt, fill: colors.accent, upper(
-        translate("contents"),
-      ))
+      #text(
+        font: fonts.header,
+        weight: "bold",
+        size: 1.2em,
+        tracking: 2pt,
+        fill: colors.accent,
+        upper(
+          translate("contents"),
+        ),
+      )
       #v(1em)
       #line(length: 3cm, stroke: 0.5pt + colors.muted)
     ]
@@ -191,16 +231,35 @@
       if it.level == 1 {
         // Section / Chapter Header
         v(1.5em)
-        text(font: fonts.header, weight: "black", size: 1.3em, fill: colors.text, upper(it.element.body))
+        text(
+          font: fonts.header,
+          weight: "black",
+          size: 1.3em,
+          fill: colors.text,
+          upper(it.element.body),
+        )
         h(1fr)
         // No page number for chapters, looks cleaner
       } else {
         // Recipe Entry
         v(0.5em)
         box(width: 100%)[
-          #text(font: fonts.body, size: 1.1em, fill: colors.text, it.element.body)
-          #box(width: 1fr, repeat[ #h(0.3em) #text(fill: colors.line.darken(20%), size: 0.6em)[.] #h(0.3em) ])
-          #text(font: fonts.header, weight: "bold", fill: colors.muted, context it.element.location().page())
+          #text(
+            font: fonts.body,
+            size: 1.1em,
+            fill: colors.text,
+            it.element.body,
+          )
+          #box(width: 1fr, repeat[ #h(0.3em) #text(
+              fill: colors.line.darken(20%),
+              size: 0.6em,
+            )[.] #h(0.3em) ])
+          #text(
+            font: fonts.header,
+            weight: "bold",
+            fill: colors.muted,
+            context it.element.location().page(),
+          )
         ]
       }
     }
@@ -271,7 +330,13 @@
         width: 100%,
         stroke: 0.5pt + colors.line.darken(5%),
       )[
-        #text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, translate("ingredients"))
+        #text(
+          font: fonts.header,
+          weight: "bold",
+          size: 1.1em,
+          fill: colors.text,
+          translate("ingredients"),
+        )
         #v(0.8em)
         #set text(size: 0.95em)
 
@@ -294,7 +359,13 @@
 
       if notes != none {
         v(1.5em)
-        text(font: fonts.header, size: 0.9em, weight: "bold", fill: colors.accent, translate("chefs-note"))
+        text(
+          font: fonts.header,
+          size: 0.9em,
+          weight: "bold",
+          fill: colors.accent,
+          translate("chefs-note"),
+        )
         v(0.3em)
         text(style: "italic", size: 0.9em, fill: colors.muted, notes)
       }
@@ -302,14 +373,26 @@
 
     // -- Right Column: Instructions --
     {
-      text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, translate("preparations"))
+      text(
+        font: fonts.header,
+        weight: "bold",
+        size: 1.1em,
+        fill: colors.text,
+        translate("preparations"),
+      )
       v(1em)
 
       set enum(
-        numbering: n => text(font: fonts.header, size: 1.2em, weight: "bold", fill: colors.accent, box(
-          inset: (right: 0.5em),
-          [#n],
-        )),
+        numbering: n => text(
+          font: fonts.header,
+          size: 1.2em,
+          weight: "bold",
+          fill: colors.accent,
+          box(
+            inset: (right: 0.5em),
+            [#n],
+          ),
+        ),
         spacing: 0.8em,
       )
       set par(leading: 1em, justify: true)
