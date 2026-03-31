@@ -1,11 +1,11 @@
-#import "i18n.typ": built-in-dicts // Import built-in dictionaries for localization
+#import "i18n.typ": built-in-dicts
 
 // --- Visuals ---
 #let colors = (
   text: rgb("#333333"),
   muted: rgb("#757575"),
-  accent: rgb("#D9534F"), // Warm red
-  bg-ing: rgb("#F9F9F9"), // Very light gray for ingredients
+  accent: rgb("#D9534F"),
+  bg-ing: rgb("#F9F9F9"),
   line: rgb("#EEEEEE"),
 )
 
@@ -16,20 +16,35 @@
 )
 
 #let icons = (
-  time: box(height: 0.8em, baseline: 0.1em, image(bytes("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>"), format: "svg")),
-  yield: box(height: 0.8em, baseline: 0.1em, image(bytes("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path><circle cx='9' cy='7' r='4'></circle><path d='M23 21v-2a4 4 0 0 0-3-3.87'></path><path d='M16 3.13a4 4 0 0 1 0 7.75'></path></svg>"), format: "svg")),
-  fire: box(height: 0.8em, baseline: 0.1em, image(bytes("<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.243-2.143.5-3.143.51.758 1.573 1.7 1.5 3.143z'/></svg>"), format: "svg")),
+  time: box(height: 0.8em, baseline: 0.1em, image(
+    bytes(
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>",
+    ),
+    format: "svg",
+  )),
+  yield: box(height: 0.8em, baseline: 0.1em, image(
+    bytes(
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path><circle cx='9' cy='7' r='4'></circle><path d='M23 21v-2a4 4 0 0 0-3-3.87'></path><path d='M16 3.13a4 4 0 0 1 0 7.75'></path></svg>",
+    ),
+    format: "svg",
+  )),
+  fire: box(height: 0.8em, baseline: 0.1em, image(
+    bytes(
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.243-2.143.5-3.143.51.758 1.573 1.7 1.5 3.143z'/></svg>",
+    ),
+    format: "svg",
+  )),
 )
 
 // --- Components ---
 
 #let checkbox = {
   box(
-    height: 0.8em, 
-    width: 0.8em, 
-    stroke: 1pt + colors.muted.lighten(40%), 
-    radius: 2pt, 
-    baseline: 20%
+    height: 0.8em,
+    width: 0.8em,
+    stroke: 1pt + colors.muted.lighten(40%),
+    radius: 2pt,
+    baseline: 20%,
   )
 }
 
@@ -42,15 +57,15 @@
 #let translate(key) = context {
   let lang = text.lang
   let from-user = user-dicts.get()
-  
+
   // 1. Check User-provided dict for this lang
   if lang in from-user and key in from-user.at(lang) {
     return from-user.at(lang).at(key)
   }
-  
+
   // 2. Fallback to Library-provided dict for this lang
   let default-dict = built-in-dicts.at(lang, default: built-in-dicts.at("en"))
-  
+
   // 3. Return the value, or the key name if absolutely nothing is found
   return default-dict.at(key, default: key)
 }
@@ -64,7 +79,7 @@
   cover-image: none,
   lang: "en",
   custom-dicts: (:),
-  body
+  body,
 ) = {
   set document(title: title, author: author)
   set page(
@@ -76,23 +91,21 @@
         set text(font: fonts.header, size: 9pt, fill: colors.muted)
         grid(
           columns: (1fr, auto, 1fr),
-          align(left, title),
-          align(center)[— #p —],
-          align(right, author)
+          align(left, title), align(center)[— #p —], align(right, author),
         )
         v(-0.8em)
         line(length: 100%, stroke: 0.5pt + colors.line)
       }
     },
-    footer: none
+    footer: none,
   )
-  
+
   set text(
-    font: fonts.body, 
-    size: 11pt, 
-    fill: colors.text, 
+    font: fonts.body,
+    size: 11pt,
+    fill: colors.text,
     lang: lang,
-    features: (onum: 1)
+    features: (onum: 1),
   )
 
   // Store the user's custom dictionary in state
@@ -106,12 +119,14 @@
     pagebreak(weak: true)
     set align(center + horizon)
     block(width: 100%)[
-        #text(font: fonts.header, weight: "bold", size: 0.9em, tracking: 2pt, fill: colors.accent, upper(translate("chapter")))
-        #v(0.5em)
-        #text(font: fonts.header, weight: "black", size: 3.5em, fill: colors.text, it.body)
+      #text(font: fonts.header, weight: "bold", size: 0.9em, tracking: 2pt, fill: colors.accent, upper(
+        translate("chapter"),
+      ))
+      #v(0.5em)
+      #text(font: fonts.header, weight: "black", size: 3.5em, fill: colors.text, it.body)
     ]
   }
-  
+
   show heading.where(level: 2): it => {
     pagebreak(weak: true)
     v(1em)
@@ -126,28 +141,36 @@
       #if cover-image != none {
         place(top, image(cover-image, width: 100%, height: 60%, fit: "cover"))
       }
-      
+
       #place(center + horizon)[
         #block(
-           width: 75%, 
-           stroke: (
-             top: 4pt + accent-color, 
-             bottom: if cover-image == none { 4pt + accent-color } else { none }
-           ), 
-           inset: (y: 3em),
-           fill: if cover-image != none { colors.bg-ing.lighten(10%) } else { none },
-           outset: if cover-image != none { 1cm } else { 0cm }
+          width: 75%,
+          stroke: (
+            top: 4pt + accent-color,
+            bottom: if cover-image == none { 4pt + accent-color } else { none },
+          ),
+          inset: (y: 3em),
+          fill: if cover-image != none { colors.bg-ing.lighten(10%) } else { none },
+          outset: if cover-image != none { 1cm } else { 0cm },
         )[
           #par(leading: 0.35em)[
             #text(font: fonts.header, weight: "black", size: 4.5em, fill: colors.text, title)
           ]
           #v(1.5em)
-          #text(font: fonts.body, style: "italic", size: 1.5em, fill: colors.muted, translate("collection") + " " + author)
+          #text(
+            font: fonts.body,
+            style: "italic",
+            size: 1.5em,
+            fill: colors.muted,
+            translate("collection") + " " + author,
+          )
         ]
       ]
-      
+
       #place(bottom + center)[
-         #pad(bottom: 3cm, text(font: fonts.header, size: 0.8em, tracking: 3pt, fill: colors.muted, upper(date.display("[month repr:long] [year]"))))
+        #pad(bottom: 3cm, text(font: fonts.header, size: 0.8em, tracking: 3pt, fill: colors.muted, upper(
+          date.display("[month repr:long] [year]"),
+        )))
       ]
     ]
   }
@@ -156,12 +179,14 @@
   page(header: none)[
     #v(3cm)
     #align(center)[
-       #text(font: fonts.header, weight: "bold", size: 1.2em, tracking: 2pt, fill: colors.accent, upper(translate("contents")))
-       #v(1em)
-       #line(length: 3cm, stroke: 0.5pt + colors.muted)
+      #text(font: fonts.header, weight: "bold", size: 1.2em, tracking: 2pt, fill: colors.accent, upper(
+        translate("contents"),
+      ))
+      #v(1em)
+      #line(length: 3cm, stroke: 0.5pt + colors.muted)
     ]
     #v(1.5cm)
-    
+
     #show outline.entry: it => {
       if it.level == 1 {
         // Section / Chapter Header
@@ -174,12 +199,12 @@
         v(0.5em)
         box(width: 100%)[
           #text(font: fonts.body, size: 1.1em, fill: colors.text, it.element.body)
-          #box(width: 1fr, repeat[ #h(0.3em) #text(fill: colors.line.darken(20%), size: 0.6em)[.] #h(0.3em) ]) 
+          #box(width: 1fr, repeat[ #h(0.3em) #text(fill: colors.line.darken(20%), size: 0.6em)[.] #h(0.3em) ])
           #text(font: fonts.header, weight: "bold", fill: colors.muted, context it.element.location().page())
         ]
       }
     }
-    
+
     #outline(title: none, indent: 0pt, depth: 2)
   ]
 
@@ -201,7 +226,7 @@
 ) = {
   // 1. Header Section
   heading(level: 2, name)
-  
+
   // Description & Meta row
   grid(
     columns: (1fr, auto),
@@ -220,7 +245,7 @@
       if meta.len() > 0 {
         meta.join(h(1.5em))
       }
-    })
+    }),
   )
 
   v(0.8em)
@@ -231,14 +256,14 @@
   grid(
     columns: (35%, 1fr),
     gutter: 2.5em,
-    
+
     // -- Left Column: Ingredients --
     {
       if image != none {
         block(width: 100%, height: auto, clip: true, radius: 4pt, image)
         v(1.5em)
       }
-      
+
       block(
         fill: colors.bg-ing,
         inset: 1.2em,
@@ -249,7 +274,7 @@
         #text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, translate("ingredients"))
         #v(0.8em)
         #set text(size: 0.95em)
-        
+
         #for ing in ingredients {
           grid(
             columns: (auto, 1fr),
@@ -261,7 +286,7 @@
               } else {
                 ing
               }
-            }
+            },
           )
           v(0.6em)
         }
@@ -279,18 +304,21 @@
     {
       text(font: fonts.header, weight: "bold", size: 1.1em, fill: colors.text, translate("preparations"))
       v(1em)
-      
+
       set enum(
-        numbering: n => text(font: fonts.header, size: 1.2em, weight: "bold", fill: colors.accent, box(inset: (right: 0.5em), [#n]))
+        numbering: n => text(font: fonts.header, size: 1.2em, weight: "bold", fill: colors.accent, box(
+          inset: (right: 0.5em),
+          [#n],
+        )),
       )
       set par(leading: 1em, justify: true)
-      
+
       // Just apply spacing to list items via a show rule on the item
       show enum.item: it => {
         pad(bottom: 0.8em, it)
       }
-      
+
       instructions
-    }
+    },
   )
 }
