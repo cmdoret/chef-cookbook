@@ -310,13 +310,9 @@
           inset: (right: 0.5em),
           [#n],
         )),
+        spacing: 0.8em,
       )
       set par(leading: 1em, justify: true)
-
-      // Just apply spacing to list items via a show rule on the item
-      show enum.item: it => {
-        pad(bottom: 0.8em, it)
-      }
 
       instructions
     },
