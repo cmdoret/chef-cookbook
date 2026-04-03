@@ -16,8 +16,9 @@ Below are the instructions to use it.
 The development environment consists of:
 
 - A `justfile` to run common commands easily (e.g. `just build-template`). `just` lists available commands.
-- A [`nix`](https://nix.dev/) development shell embedding all the tooling required to work in the repo, as well as fonts.
-- Pre-commits hooks (via `prek`) to check and format the code automatically before every commit.
+- A [`nix`](https://nix.dev/) development shell in `tools/nix/flake.nix` embedding all the tooling required to work in the repo, as well as fonts.
+- Pre-commits hooks (via `prek`) in `pre-commit-config.yaml` to check and format the code automatically before every commit.
 
 The shell can be activated either by running `just develop`, or `direnv allow` in the repository, if you have `direnv` set up.
 The advantage of `direnv` is that it then auto-activates the shell every time you `cd` into the repo.
+`prek` is automatically set up when entering the development shell.
