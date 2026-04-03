@@ -34,6 +34,12 @@
     ),
     format: "svg",
   )),
+  utensils: box(height: 0.8em, baseline: 0.1em, image(
+    bytes(
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2'/><path d='M7 2v20'/><path d='M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3'/><path d='M18 22v-7'/></svg>",
+    ),
+    format: "svg",
+  )),
 )
 
 // --- Components ---
@@ -325,6 +331,7 @@
 #let recipe(
   name,
   ingredients: (),
+  utensils: (),
   instructions: [],
   description: none,
   image: none,
@@ -406,6 +413,38 @@
           v(0.6em)
         }
       ]
+
+      if utensils.len() > 0 {
+        v(1.5em)
+        block(
+          inset: 1.2em,
+          radius: 4pt,
+          width: 100%,
+          stroke: (
+            left: 3pt + colors.accent,
+            rest: 0.5pt + colors.line.darken(5%),
+          ),
+        )[
+          #text(
+            font: fonts.header,
+            weight: "bold",
+            size: 1.1em,
+            fill: colors.text,
+            translate("utensils"),
+          )
+          #v(0.8em)
+          #set text(size: 0.95em)
+
+          #for utensil in utensils {
+            grid(
+              columns: (auto, 1fr),
+              gutter: 0.6em,
+              text(fill: colors.accent)[#icons.utensils], utensil,
+            )
+            v(0.6em)
+          }
+        ]
+      }
 
       if notes != none {
         v(1.5em)
