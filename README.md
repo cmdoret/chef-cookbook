@@ -43,6 +43,8 @@ Use this function to add a recipe to your cookbook.
 #recipe(
   "Recipe Name",
   description: [Short description of the dish.],
+  cuisine: "Italian",                // Optional: displayed with a globe icon
+  tags: ("pasta", "quick", "easy"),  // Optional: rendered as pill badges
   servings: "4 servings",
   prep-time: "20m",
   cook-time: "40m",
@@ -88,6 +90,24 @@ utensils: (
 ## Notes
 
 The `notes` parameter on `recipe()` renders a styled callout box in the sidebar below the ingredients, with a lightbulb icon and accent-colored left border.
+
+## Cuisine & Tags
+
+Recipes can optionally include metadata for cuisine type and tags:
+
+- **`cuisine`** (string): Displayed in the recipe header next to a globe icon. Use it to indicate the origin or style of the dish (e.g., `"Italian"`, `"Japanese"`).
+- **`tags`** (list of strings): Rendered as small pill badges below the recipe header, next to a tag icon. Useful for categorising recipes by dietary info, meal type, etc.
+
+```typ
+#recipe(
+  "Pasta Primavera",
+  cuisine: "Italian",
+  tags: ("vegetarian", "pasta", "quick"),
+  // ... other params
+)
+```
+
+Both parameters are optional and recipes without them render exactly as before.
 
 ## Named Sections
 
