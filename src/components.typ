@@ -54,3 +54,20 @@
   line(length: 2cm, stroke: 1pt + colors.accent.lighten(40%))
   v(0.5em)
 }
+
+/// Small pill badge for recipe tags.
+#let tag-pill(label) = {
+  box(
+    inset: (x: 0.5em, y: 0.25em),
+    radius: 3pt,
+    fill: colors.accent.lighten(85%),
+    stroke: 0.5pt + colors.accent.lighten(50%),
+    text(
+      font: fonts.header,
+      size: 0.75em,
+      weight: "medium",
+      fill: colors.accent.darken(10%),
+      label,
+    ),
+  )
+}
