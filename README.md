@@ -180,6 +180,10 @@ If a language is missing or you wish to override specific terms (e.g., using "Co
 
 ```
 
+## Development
+
+For development guide, see [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md)
+
 ## License
 
 MIT
