@@ -29,6 +29,8 @@
 #recipe(
   "Roasted Tomato Basil Soup",
   description: [A comforting, velvety soup that captures the essence of late summer harvest. Perfect for chilly evenings.],
+  cuisine: "American",
+  tags: ("soup", "vegetarian", "comfort food", "roasted"),
   servings: "4 bowls",
   prep-time: "15m",
   cook-time: "40m",
@@ -73,6 +75,8 @@
   recipe(
     "Gegrillter Lachs mit Zitronen-Dill-Marinade",
     description: [Ein einfaches und elegantes Gericht, das die Frische des Lachses mit einer aromatischen Zitronen-Dill-Marinade kombiniert. Perfekt für den Sommer!],
+    cuisine: "Deutsch",
+    tags: ("Fisch", "Grillen", "Sommer", "Leicht"),
     servings: "2 Filets",
     prep-time: "10 Min.",
     cook-time: "15 Min.",
@@ -113,6 +117,8 @@
   recipe(
     "Smažený sýr s hranolkami",
     description: [Klasické české jídlo, které je oblíbené mezi dětmi i dospělými. Křupavý smažený sýr podávaný s hranolkami a tatarskou omáčkou.],
+    cuisine: "Česká",
+    tags: ("smažené", "sýr", "klasika", "rychlé"),
     servings: "4 porce",
     prep-time: "15 min.",
     cook-time: "10 min.",
