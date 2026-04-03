@@ -4,7 +4,9 @@
     collection: "A collection by",
     contents: "Contents",
     ingredients: "INGREDIENTS",
+    utensils: "UTENSILS",
     chefs-note: "CHEF'S NOTE",
+    note: "NOTE",
     preparations: "PREPARATION",
   ),
   de: (
@@ -12,7 +14,9 @@
     collection: "Eine Sammlung von",
     contents: "Inhaltsverzeichnis",
     ingredients: "ZUTATEN",
+    utensils: "KÜCHENUTENSILIEN",
     chefs-note: "ANMERKUNG DES KOCHS",
+    note: "HINWEIS",
     preparations: "ZUBEREITUNG",
   ),
   pl: (
@@ -20,7 +24,9 @@
     collection: "Kolekcja autorstwa",
     contents: "Spis treści",
     ingredients: "SKŁADNIKI",
+    utensils: "PRZYBORY",
     chefs-note: "NOTATKA SZEFA KUCHNI",
+    note: "UWAGA",
     preparations: "PRZYGOTOWANIE",
   ),
   fr: (
@@ -28,7 +34,9 @@
     collection: "Une collection de",
     contents: "Sommaire",
     ingredients: "INGRÉDIENTS",
+    utensils: "USTENSILES",
     chefs-note: "NOTE DU CHEF",
+    note: "NOTE",
     preparations: "PRÉPARATION",
   ),
   es: (
@@ -36,7 +44,9 @@
     collection: "Una colección de",
     contents: "Índice",
     ingredients: "INGREDIENTES",
+    utensils: "UTENSILIOS",
     chefs-note: "NOTA DEL CHEF",
+    note: "NOTA",
     preparations: "PREPARACIÓN",
   ),
   it: (
@@ -44,7 +54,9 @@
     collection: "Una raccolta di",
     contents: "Indice",
     ingredients: "INGREDIENTI",
+    utensils: "UTENSILI",
     chefs-note: "NOTE DELLO CHEF",
+    note: "NOTA",
     preparations: "PREPARAZIONE",
   ),
 )
