@@ -270,6 +270,56 @@
   body
 }
 
+// --- Recipe Components ---
+
+/// Renders a styled note callout box. Can be used standalone anywhere
+/// in the document, or within recipe instructions.
+///
+/// - body (content): The note content.
+/// - title (content, none): Optional custom title. Defaults to a
+///   translated "NOTE" label with a lightbulb icon.
+#let note(body, title: none) = {
+  block(
+    width: 100%,
+    inset: (left: 1em, rest: 0.8em),
+    radius: (right: 4pt),
+    stroke: (left: 3pt + colors.accent, rest: 0.5pt + colors.line),
+    fill: colors.bg-ing,
+  )[
+    #text(
+      font: fonts.header,
+      size: 0.9em,
+      weight: "bold",
+      fill: colors.accent,
+    )[
+      #icons.note #h(0.3em)
+      #if title != none { upper(title) } else { translate("chefs-note") }
+    ]
+    #v(0.3em)
+    #text(style: "italic", size: 0.9em, fill: colors.muted, body)
+  ]
+}
+
+/// Renders a named section header within recipe instructions.
+/// Use this to divide preparation steps into logical groups
+/// (e.g., "For the dough", "For the sauce").
+///
+/// - title (string, content): The section name.
+#let recipe-section(title) = {
+  v(1em)
+  text(
+    font: fonts.header,
+    weight: "bold",
+    size: 0.95em,
+    tracking: 1pt,
+    fill: colors.accent,
+    upper(title),
+  )
+  v(0.2em)
+  line(length: 2cm, stroke: 1pt + colors.accent.lighten(40%))
+  v(0.5em)
+}
+
 // --- Recipe Function ---
 
 #let recipe(
