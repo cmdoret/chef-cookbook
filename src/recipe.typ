@@ -2,7 +2,7 @@
 
 #import "theme.typ": colors, fonts, icons
 #import "i18n.typ": translate
-#import "components.typ": checkbox, note-box, section-heading
+#import "components.typ": checkbox, note-box, section-heading, tag-pill
 
 #let recipe(
   name,
@@ -14,6 +14,8 @@
   servings: none,
   prep-time: none,
   cook-time: none,
+  cuisine: none,
+  tags: (),
   notes: none,
 ) = {
   // 1. Header Section
@@ -31,6 +33,7 @@
     align(right + horizon, {
       set text(font: fonts.header, size: 0.9em, fill: colors.muted)
       let meta = ()
+      if cuisine != none { meta.push([#icons.cuisine #h(0.3em) #cuisine]) }
       if servings != none { meta.push([#icons.yield #h(0.3em) #servings]) }
       if prep-time != none { meta.push([#icons.time #h(0.3em) #prep-time]) }
       if cook-time != none { meta.push([#icons.fire #h(0.3em) #cook-time]) }
@@ -39,6 +42,15 @@
       }
     }),
   )
+
+  // Tags
+  if tags.len() > 0 {
+    v(0.5em)
+    set text(font: fonts.header, size: 0.9em, fill: colors.muted)
+    icons.tag
+    h(0.3em)
+    tags.map(tag-pill).join(h(0.4em))
+  }
 
   v(0.8em)
   line(length: 100%, stroke: 0.5pt + colors.line)
