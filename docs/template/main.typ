@@ -46,25 +46,21 @@
     "Blender or immersion blender",
     "Ladle",
   ),
-  instructions: [
-    #recipe-section("Roasting")
-    + Preheat oven to 200°C (400°F). Line a large baking sheet with parchment paper. Place tomatoes cut-side up on the baking sheet.
-    + Drizzle everything generously with olive oil and season with salt and pepper. Roast for 40-45 minutes.
-
-    #recipe-section("Blending & Serving")
-    + Squeeze the roasted garlic cloves out of their skins. Transfer the tomatoes and garlic to a blender.
-    + Blend until smooth. Stir in heavy cream if using for extra richness.
-    + Serve hot with crusty bread.
-  ],
+  instructions: (
+    "Roasting": [
+      + Preheat oven to 200°C (400°F). Line a large baking sheet with parchment paper. Place tomatoes cut-side up on the baking sheet.
+      + Drizzle everything generously with olive oil and season with salt and pepper. Roast for 40-45 minutes.
+    ],
+    "Blending & Serving": [
+      + Squeeze the roasted garlic cloves out of their skins. Transfer the tomatoes and garlic to a blender.
+      + Blend until smooth. Stir in heavy cream if using for extra richness.
+      + Serve hot with crusty bread.
+    ],
+  ),
   notes: "For a vegan version, use coconut milk instead of heavy cream.",
 )
 
 = Mains
-
-// You can place standalone notes between recipes for general tips.
-#note[
-  All recipes in this section pair wonderfully with a crisp green salad and freshly baked bread.
-]
 
 // Cookbook can be multilingual! Although the default language is English, you can specify a different language for blocks of recipes. You can either use built-in translations (currently supports German, Polish, French, Spanish, and Italian) or provide your own custom dictionary (see the 'custom-dicts' property above).
 
@@ -91,17 +87,18 @@
       "Silikonpinsel",
       "Grillzange",
     ),
-    instructions: [
-      #recipe-section("Marinade")
-      + Heizen Sie den Grill auf mittlere bis hohe Hitze vor. Bestreichen Sie die Lachsfilets mit Olivenöl.
-
-      #recipe-section("Grillen")
-      + Legen Sie den Lachs mit der Hautseite nach unten auf den Grill. Ca. 6–8 Minuten ohne Bewegung grillen.
-      + Vorsichtig wenden und weitere 2–4 Minuten grillen.
-
-      #recipe-section("Servieren")
-      + Mit frischen Zitronenscheiben und Kräutern garnieren und servieren.
-    ],
+    instructions: (
+      "Marinade": [
+        + Heizen Sie den Grill auf mittlere bis hohe Hitze vor. Bestreichen Sie die Lachsfilets mit Olivenöl.
+      ],
+      "Grillen": [
+        + Legen Sie den Lachs mit der Hautseite nach unten auf den Grill. Ca. 6–8 Minuten ohne Bewegung grillen.
+        + Vorsichtig wenden und weitere 2–4 Minuten grillen.
+      ],
+      "Servieren": [
+        + Mit frischen Zitronenscheiben und Kräutern garnieren und servieren.
+      ],
+    ),
     notes: "Achten Sie darauf, den Lachs nicht zu lange zu garen.",
   )
 }

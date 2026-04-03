@@ -1,3 +1,5 @@
+// Internationalization dictionaries and translation utilities.
+
 #let built-in-dicts = (
   en: (
     chapter: "Chapter",
@@ -60,3 +62,25 @@
     preparations: "PREPARAZIONE",
   ),
 )
+
+// State for user-provided custom dictionaries.
+#let user-dicts = state("chef-cookbook-i18n-from-user", (:))
+
+// Resolve a translation key for the current language.
+// Checks user-provided dictionaries first, then built-in ones,
+// and falls back to the raw key if nothing is found.
+#let translate(key) = context {
+  let lang = text.lang
+  let from-user = user-dicts.get()
+
+  // 1. Check user-provided dict for this lang
+  if lang in from-user and key in from-user.at(lang) {
+    return from-user.at(lang).at(key)
+  }
+
+  // 2. Fallback to built-in dict for this lang
+  let default-dict = built-in-dicts.at(lang, default: built-in-dicts.at("en"))
+
+  // 3. Return the value, or the raw key if nothing is found
+  return default-dict.at(key, default: key)
+}
