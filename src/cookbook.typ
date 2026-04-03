@@ -164,19 +164,21 @@
       if it.level == 1 {
         // Section / Chapter Header
         v(1.5em)
-        text(
-          font: fonts.header,
-          weight: "black",
-          size: 1.3em,
-          fill: colors.text,
-          upper(it.element.body),
-        )
+        link(it.element.location())[
+          #text(
+            font: fonts.header,
+            weight: "black",
+            size: 1.3em,
+            fill: colors.text,
+            upper(it.element.body),
+          )
+        ]
         h(1fr)
         // No page number for chapters, looks cleaner
       } else {
         // Recipe Entry
         v(0.5em)
-        box(width: 100%)[
+        link(it.element.location(), box(width: 100%)[
           #text(
             font: fonts.body,
             size: 1.1em,
@@ -193,7 +195,7 @@
             fill: colors.muted,
             context it.element.location().page(),
           )
-        ]
+        ])
       }
     }
 
