@@ -52,6 +52,11 @@ Use this function to add a recipe to your cookbook.
     "Salt",
     "Pepper",
   ),
+  utensils: (
+    "Large mixing bowl",
+    "Whisk",
+    "Baking sheet",
+  ),
   instructions: [
     + First step...
     + Second step...
@@ -67,6 +72,41 @@ Ingredients can be specified as a list containing either:
 
 - **Strings**: Simple text (e.g., "Salt").
 - **Dictionaries**: Structured data with `amount` and `name` keys (e.g., `(amount: "1 cup", name: "Milk")`).
+
+## Utensils Format
+
+Utensils are specified as a list of strings. They are rendered in the recipe sidebar with a utensil icon and accent-colored left border.
+
+```typ
+utensils: (
+  "Large pot",
+  "Wooden spoon",
+  "Blender",
+)
+```
+
+## Notes
+
+The `notes` parameter on `recipe()` renders a styled callout box in the sidebar below the ingredients, with a lightbulb icon and accent-colored left border.
+
+## Named Sections
+
+To divide preparation steps into named groups, pass a dictionary to `instructions` instead of plain content. Each key becomes a section heading:
+
+```typ
+instructions: (
+  "For the dough": [
+    + Mix flour and eggs...
+    + Knead for 10 minutes...
+  ],
+  "For the sauce": [
+    + Heat olive oil...
+    + Add garlic...
+  ],
+)
+```
+
+Each section renders as an accent-colored uppercase label with a decorative underline, visually separating groups of steps within the preparation column. Plain content is still supported for recipes without sections.
 
 ## Internationalization (i18n)
 
@@ -110,7 +150,9 @@ If a language is missing or you wish to override specific terms (e.g., using "Co
       collection: "Sbírka od ",
       contents: "Obsah",
       ingredients: "INGREDIENCE",
+      utensils: "NÁČINÍ",
       chefs-note: "POZNÁMKA ŠÉFKUCHAŘE",
+      note: "POZNÁMKA",
       preparations: "PŘÍPRAVA",
     ),
   )
