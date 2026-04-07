@@ -10,6 +10,7 @@
     chefs-note: "CHEF'S NOTE",
     note: "NOTE",
     preparations: "PREPARATION",
+  ),
   nl: (
     chapter: "Hoofdstuk",
     collection: "Een collectie van",
