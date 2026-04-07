@@ -10,6 +10,15 @@
     chefs-note: "CHEF'S NOTE",
     note: "NOTE",
     preparations: "PREPARATION",
+  nl: (
+    chapter: "Hoofdstuk",
+    collection: "Een collectie van",
+    contents: "Inhoudsopgave",
+    ingredients: "INGREDIËNTEN",
+    utensils: "KEUKENGEREI",
+    chefs-note: "NOTITIE VAN DE CHEF",
+    note: "NOTITIE",
+    preparations: "BEREIDINGSWIJZE",
   ),
   de: (
     chapter: "Kapitel",
